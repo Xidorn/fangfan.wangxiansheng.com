@@ -1,175 +1,944 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>防范</title>
-  <meta name="description" content="防范诈骗，人人有责。遇到可疑情况，请及时拨打反诈热线96110或110报警。">
-  
-  <!-- Open Graph，Facebook、微信等支持 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>防范诈骗，人人有责</title>
+  <meta name="description" content="防范诈骗，人人有责。遇到可疑情况，请及时拨打反诈热线 96110 或 110 报警。" />
+
   <meta property="og:title" content="防范诈骗，人人有责" />
-  <meta property="og:description" content="遇到可疑情况，请及时拨打反诈热线96110或110报警。" />
+  <meta property="og:description" content="增强防范意识，守护财产安全。遇到可疑情况，请及时拨打反诈热线 96110 或 110 报警。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://fangfan.wangxiansheng.com/" />
   <meta property="og:image" content="https://fangfan.wangxiansheng.com/images/logo.png" />
   <meta property="og:locale" content="zh_CN" />
-    
-  <!-- Twitter Card 支持 -->
+
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="防范诈骗，人人有责" />
-  <meta name="twitter:description" content="遇到可疑情况，请及时拨打反诈热线96110或110报警。" />
+  <meta name="twitter:description" content="增强防范意识，守护财产安全。遇到可疑情况，请及时拨打反诈热线 96110 或 110 报警。" />
   <meta name="twitter:image" content="https://fangfan.wangxiansheng.com/images/logo.png" />
 
-
   <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1830;
+      --panel: rgba(12, 24, 47, 0.72);
+      --panel-2: rgba(255, 255, 255, 0.04);
+      --line: rgba(255, 255, 255, 0.09);
+      --text: #f6f8fc;
+      --muted: #98a7c2;
+      --primary: #ff6a4d;
+      --primary-2: #ff8c54;
+      --safe: #26d19c;
+      --safe-2: #81f1cd;
+      --glow: 0 24px 80px rgba(0, 0, 0, 0.42);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max-width: 1180px;
+    }
+
     * {
       box-sizing: border-box;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: "Microsoft YaHei", sans-serif;
-      background: linear-gradient(-45deg, #1a237e, #512da8, #283593, #3949ab);
-      background-size: 400% 400%;
-      animation: gradient 15s ease infinite;
-      color: #fff;
+      font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255, 106, 77, 0.16), transparent 0 26%),
+        radial-gradient(circle at 86% 12%, rgba(38, 209, 156, 0.08), transparent 0 22%),
+        radial-gradient(circle at 50% 120%, rgba(92, 125, 255, 0.12), transparent 0 30%),
+        linear-gradient(180deg, #08111f 0%, #091426 45%, #060d17 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: .7;
     }
+
+    body::before {
+      width: 320px;
+      height: 320px;
+      background: rgba(255, 106, 77, 0.16);
+      top: -100px;
+      left: -60px;
+    }
+
+    body::after {
+      width: 280px;
+      height: 280px;
+      background: rgba(38, 209, 156, 0.10);
+      right: -60px;
+      top: 180px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
     .container {
-      max-width: 1080px;
-      margin: auto;
-      padding: 50px 20px;
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
     }
-    h1 {
-      text-align: center;
-      font-size: 40px;
-      color: #FFFFFF;
-      text-shadow: 0 0 12px #dedede;
-      margin-bottom: 10px;
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      padding: 16px 0;
+      background: rgba(5, 12, 23, 0.48);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .subtitle {
-      text-align: center;
-      font-size: 18px;
-      color: #e0e0e0;
-      margin-bottom: 50px;
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
     }
-    .section {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 30px;
-      margin-bottom: 40px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
     }
-    .section h2 {
-      color: #FFFFFF;
-      font-size: 26px;
-      margin-bottom: 15px;
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(255,106,77,0.18), rgba(255,140,84,0.06));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      font-size: 20px;
     }
-    .section p {
-      font-size: 18px;
-      line-height: 1.8;
-      margin: 10px 0;
-      color: #eeeeee;
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
-    .danger {
-      color: #ff6659;
+
+    .nav a {
+      color: var(--muted);
+      padding: 10px 14px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+      font-size: 14px;
     }
-    .tips {
-      color: #a3d977;
+
+    .nav a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
     }
-    .hotline {
-      text-align: center;
-      margin-top: 30px;
+
+    .hero {
+      padding: 52px 0 24px;
     }
-    .hotline span {
-      background: linear-gradient(to right, #64b5f6, #9575cd);
-      color: #fff;
-      padding: 15px 35px;
-      font-size: 22px;
-      border-radius: 12px;
+
+    .hero-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 36px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)),
+        linear-gradient(180deg, rgba(8, 19, 36, 0.92), rgba(6, 14, 26, 0.88));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--glow);
+      padding: 34px;
+    }
+
+    .hero-wrap::before {
+      content: "";
+      position: absolute;
+      inset: auto -100px -120px auto;
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle, rgba(255,106,77,0.22), transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 106, 77, 0.12);
+      border: 1px solid rgba(255, 106, 77, 0.18);
+      color: #ffd7cf;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero-main h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 66px);
+      line-height: 1.02;
+      letter-spacing: 1px;
+      max-width: 720px;
+    }
+
+    .hero-main h1 span {
       display: inline-block;
-      box-shadow: 0 0 25px rgba(100, 181, 246, 0.6);
-      font-weight: bold;
-      transition: transform 0.3s ease;
+      background: linear-gradient(90deg, #ffffff 0%, #ffd7cf 48%, #ffc7b5 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
-    .hotline span:hover {
-      transform: scale(1.05);
+
+    .hero-desc {
+      max-width: 700px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 18px;
     }
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 28px;
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 16px;
+      font-weight: 700;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 12px 32px rgba(255, 106, 77, 0.28);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 30px;
+      letter-spacing: .5px;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .notice,
+    .signal-card,
+    .section,
+    .cta,
+    .footer-box {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--glow);
+      backdrop-filter: blur(16px);
+    }
+
+    .notice {
+      border-radius: 28px;
+      padding: 26px;
+      background:
+        linear-gradient(180deg, rgba(255,106,77,0.14), rgba(255,255,255,0.04)),
+        rgba(12,24,47,0.72);
+    }
+
+    .notice small {
+      display: block;
+      color: #ffd8cf;
+      margin-bottom: 8px;
+      letter-spacing: .4px;
+    }
+
+    .notice .hotline {
+      font-size: clamp(40px, 6vw, 60px);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin: 6px 0 10px;
+    }
+
+    .notice p {
+      margin: 0;
+      color: #ffe3dc;
+      font-size: 15px;
+    }
+
+    .signal-card {
+      border-radius: 24px;
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .signal-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .signal-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.06);
+      font-size: 18px;
+    }
+
+    .signal-item strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 15px;
+    }
+
+    .signal-item span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .content {
+      padding: 22px 0 88px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 22px;
+    }
+
+    .section {
+      grid-column: span 6;
+      border-radius: 28px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 28%);
+      pointer-events: none;
+    }
+
+    .section-wide {
+      grid-column: span 12;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-tag {
+      min-width: 40px;
+      height: 40px;
+      padding: 0 12px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .cards {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card {
+      position: relative;
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform .24s ease, border-color .24s ease, background .24s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.055);
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .danger-card {
+      background: linear-gradient(180deg, rgba(255,106,77,0.10), rgba(255,255,255,0.035));
+      border-color: rgba(255,106,77,0.16);
+    }
+
+    .safe-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .safe-item {
+      padding: 22px 18px;
+      border-radius: 20px;
+      text-align: center;
+      font-weight: 700;
+      color: #ebfff8;
+      background: linear-gradient(180deg, rgba(38,209,156,0.14), rgba(255,255,255,0.035));
+      border: 1px solid rgba(38,209,156,0.2);
+      font-size: 18px;
+    }
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .people-item {
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .people-item strong {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .people-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .feature {
+      padding: 16px;
+      border-radius: 18px;
+      text-align: center;
+      font-weight: 700;
+      color: #ebfff8;
+      background: linear-gradient(180deg, rgba(38,209,156,0.14), rgba(255,255,255,0.035));
+      border: 1px solid rgba(38,209,156,0.18);
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 14px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .step-index {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(255,106,77,0.18), rgba(255,140,84,0.08));
+      border: 1px solid rgba(255,106,77,0.18);
+    }
+
+    .step h3 {
+      margin: 2px 0 6px;
+      font-size: 18px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .app-note {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cta {
+      margin-top: 22px;
+      border-radius: 28px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      background:
+        linear-gradient(135deg, rgba(255,106,77,0.16), rgba(255,255,255,0.03)),
+        rgba(12,24,47,0.72);
+      border-color: rgba(255,106,77,0.16);
+    }
+
+    .cta h2 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 40px);
+    }
+
+    .cta p {
+      margin: 0;
+      color: #ffe0d7;
+    }
+
+    .cta .btn-primary {
+      min-width: 180px;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .footer {
+      padding-bottom: 32px;
+    }
+
+    .footer-box {
+      border-radius: 22px;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .safe-grid,
+      .people-grid,
+      .features {
+        grid-template-columns: 1fr;
       }
-      .section h2 {
-        font-size: 22px;
+
+      .section {
+        grid-column: span 12;
       }
-      .section p {
-        font-size: 16px;
+    }
+
+    @media (max-width: 860px) {
+      .topbar-inner,
+      .cta,
+      .footer-box {
+        flex-direction: column;
+        align-items: flex-start;
       }
-      .hotline span {
-        font-size: 18px;
-        padding: 12px 25px;
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-wrap,
+      .section,
+      .notice,
+      .signal-card,
+      .cta {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(var(--max-width), calc(100% - 20px));
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-main h1 {
+        font-size: 38px;
+      }
+
+      .hero-desc,
+      .card p,
+      .people-item p,
+      .step p,
+      .app-note {
+        font-size: 14px;
+      }
+
+      .btn {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>防范诈骗 人人有责</h1>
-    <div class="subtitle">增强防范意识，守护财产安全</div>
-
-    <div class="section">
-      <h2>常见诈骗类型</h2>
-      <p class="danger">📞 冒充公检法：以涉嫌违法为由，诱导转账“配合调查”。</p>
-      <p class="danger">💰 虚假理财投资：高额回报骗局，诱导投钱后卷款消失。</p>
-      <p class="danger">🛍️ 网络刷单返利：以兼职为幌子，引导垫资再拉黑。</p>
-      <p class="danger">🎁 虚假中奖/红包：利用“免费”诱饵获取个人信息和验证码。</p>
-      <p class="danger">💻 远程控制诈骗：以技术支持为名，诱导安装木马程序。</p>
-    </div>
-
-    <div class="section">
-      <h2>诈骗识别小窍门</h2>
-      <p>❗ 一听“涉嫌违法”就让你转账？100%是骗局！</p>
-      <p>❗ 自称“公安/检察院/法院”却无法当面联系？警惕！</p>
-      <p>❗ “高薪刷单”、“理财翻倍”、“中奖免税”？别上钩！</p>
-      <p>❗ “不让告诉家人、不许挂电话”？他们怕你冷静！</p>
-    </div>
-
-    <div class="section">
-      <h2>防骗口诀 · 牢记八字</h2>
-      <p class="tips">陌生电话不轻信</p>
-      <p class="tips">可疑链接别点击</p>
-      <p class="tips">个人信息不外泄</p>
-      <p class="tips">转账汇款先核实</p>
-    </div>
-
-    <div class="section">
-      <h2>重点人群提醒</h2>
-      <p>👵 老年人：最易遭遇冒充客服、医保、养老金诈骗</p>
-      <p>🎓 学生：谨防裸聊、兼职刷单、贷款类骗局</p>
-      <p>🧑‍💼 上班族：需警惕理财投资、冒充领导诈骗</p>
-      <p>🛒 网购人群：警惕“退款”骗局及假快递通知</p>
-    </div>
-
-    <div class="section">
-      <h2>国家反诈中心 App</h2>
-      <p>📱 请通过应用商店或官方渠道下载：</p>
-      <p>✔ 来电预警</p>
-      <p>✔ 举报线索</p>
-      <p>✔ 案例学习</p>
-    </div>
-
-    <div class="section">
-      <h2>被骗了怎么办？</h2>
-      <p>📌 保留好聊天记录、支付截图等证据。</p>
-      <p>📞 拨打全国反诈热线 <strong>96110</strong> 获得第一时间帮助。</p>
-      <p>👮‍♀️ 尽快报警，争取追回损失。</p>
-      <div class="hotline">
-        <span>反诈专线 96110</span>
+  <div class="page">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <div class="brand-mark">🛡️</div>
+          <div>全民反诈提醒</div>
+        </div>
+        <nav class="nav">
+          <a href="#types">诈骗类型</a>
+          <a href="#tips">识别技巧</a>
+          <a href="#groups">重点提醒</a>
+          <a href="#help">紧急处理</a>
+        </nav>
       </div>
-    </div>
-  </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-wrap">
+            <div class="hero-grid">
+              <div class="hero-main">
+                <div class="eyebrow">⚠️ 反诈宣传专题页面</div>
+                <h1><span>防范诈骗，</span><br />人人有责</h1>
+                <p class="hero-desc">
+                  面对陌生来电、退款理赔、投资荐股、兼职刷单、共享屏幕等情形，先停一步，先核实一步。
+                  冷静判断，才能守住自己的钱袋子。
+                </p>
+
+                <div class="hero-actions">
+                  <a class="btn btn-primary" href="#help">立即查看应急处理</a>
+                  <a class="btn btn-secondary" href="#tips">学习识别技巧</a>
+                </div>
+
+                <div class="hero-stats">
+                  <div class="stat">
+                    <strong>5 类</strong>
+                    <span>高发常见诈骗套路</span>
+                  </div>
+                  <div class="stat">
+                    <strong>4 句</strong>
+                    <span>高频识骗提醒口诀</span>
+                  </div>
+                  <div class="stat">
+                    <strong>96110</strong>
+                    <span>全国反诈预警劝阻专线</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hero-side">
+                <div class="notice">
+                  <small>全国反诈预警劝阻专线</small>
+                  <div class="hotline">96110</div>
+                  <p>遇到可疑转账、冒充客服、理财拉群、共享屏幕等情况，请第一时间求助；紧急情况下同步拨打 110 报警。</p>
+                </div>
+
+                <div class="signal-card">
+                  <div class="signal-item">
+                    <div class="signal-icon">📵</div>
+                    <div>
+                      <strong>不轻信陌生联系</strong>
+                      <span>陌生电话、短信、链接、二维码都先核实再操作。</span>
+                    </div>
+                  </div>
+                  <div class="signal-item">
+                    <div class="signal-icon">🔐</div>
+                    <div>
+                      <strong>不泄露重要信息</strong>
+                      <span>验证码、银行卡号、身份证号、密码绝不告诉他人。</span>
+                    </div>
+                  </div>
+                  <div class="signal-item">
+                    <div class="signal-icon">💸</div>
+                    <div>
+                      <strong>不仓促转账汇款</strong>
+                      <span>凡是要求你私下打款、转到“安全账户”的，一律暂停核实。</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content">
+        <div class="container grid">
+          <section class="section" id="types">
+            <div class="section-head">
+              <span class="section-tag">🚨</span>
+              <h2>常见诈骗类型</h2>
+            </div>
+            <div class="cards">
+              <article class="card danger-card">
+                <div class="card-title">📞 冒充公检法</div>
+                <p>以“涉嫌违法”“账户异常”“配合调查”等理由制造恐慌，诱导你把钱转入所谓“安全账户”。</p>
+              </article>
+              <article class="card danger-card">
+                <div class="card-title">💰 虚假理财投资</div>
+                <p>以“内幕消息”“稳赚不赔”“导师带单”为噱头，先给甜头，后诱导大额投入，最终无法提现。</p>
+              </article>
+              <article class="card danger-card">
+                <div class="card-title">🛍️ 刷单返利骗局</div>
+                <p>打着兼职赚钱幌子，让你先垫资、后补单，以连环任务持续套钱，最后直接拉黑失联。</p>
+              </article>
+              <article class="card danger-card">
+                <div class="card-title">🎁 虚假中奖 / 红包</div>
+                <p>利用“免费领取”“中大奖”“高额红包”等诱饵，骗取个人信息、验证码或支付授权。</p>
+              </article>
+              <article class="card danger-card">
+                <div class="card-title">💻 远程控制诈骗</div>
+                <p>冒充客服或技术人员，诱导安装会议软件、共享屏幕或远程控制，进而盗取资金。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="section" id="tips">
+            <div class="section-head">
+              <span class="section-tag">🧠</span>
+              <h2>诈骗识别技巧</h2>
+            </div>
+            <div class="cards">
+              <article class="card">
+                <div class="card-title">❗ 一提“涉嫌违法”就让转账</div>
+                <p>真正的公安、检察院、法院不会通过电话或网络要求你转账来“自证清白”。</p>
+              </article>
+              <article class="card">
+                <div class="card-title">❗ 一提“高收益、稳赚不赔”</div>
+                <p>高收益往往伴随高风险，凡是承诺保本高回报的，通常都值得高度怀疑。</p>
+              </article>
+              <article class="card">
+                <div class="card-title">❗ 一提“别告诉家人、别挂电话”</div>
+                <p>对方是在阻断你求证和冷静思考的机会，越催越急，越要马上停下来。</p>
+              </article>
+              <article class="card">
+                <div class="card-title">❗ 一提“验证码、共享屏幕”</div>
+                <p>验证码就是最后一道防线，共享屏幕可能直接暴露你的账户和支付操作。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="section section-wide">
+            <div class="section-head">
+              <span class="section-tag">✅</span>
+              <h2>防骗口诀 · 牢记八字</h2>
+            </div>
+            <div class="safe-grid">
+              <div class="safe-item">陌生电话不轻信</div>
+              <div class="safe-item">可疑链接别点击</div>
+              <div class="safe-item">个人信息不外泄</div>
+              <div class="safe-item">转账汇款先核实</div>
+            </div>
+          </section>
+
+          <section class="section" id="groups">
+            <div class="section-head">
+              <span class="section-tag">👥</span>
+              <h2>重点人群提醒</h2>
+            </div>
+            <div class="people-grid">
+              <article class="people-item">
+                <strong>👵 老年人</strong>
+                <p>警惕冒充客服、医保、养老金、熟人求助等话术，遇事多向家人或社区工作人员核实。</p>
+              </article>
+              <article class="people-item">
+                <strong>🎓 学生群体</strong>
+                <p>谨防兼职刷单、校园贷、冒充老师收费、裸聊敲诈等新型网络骗局。</p>
+              </article>
+              <article class="people-item">
+                <strong>🧑‍💼 上班族</strong>
+                <p>对“领导要求紧急转账”“荐股带单”“内部投资项目”等情形保持高度警惕。</p>
+              </article>
+              <article class="people-item">
+                <strong>🛒 网购人群</strong>
+                <p>小心“退款理赔”“快递异常”“客服补偿”等套路，凡涉及退款都应返回官方平台核验。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section-head">
+              <span class="section-tag">📱</span>
+              <h2>国家反诈中心 App</h2>
+            </div>
+            <div class="app-note">
+              请通过正规应用商店或官方渠道下载安装，不要轻信第三方链接、群聊安装包或所谓“代装教程”。
+            </div>
+            <div class="features">
+              <div class="feature">来电预警</div>
+              <div class="feature">举报线索</div>
+              <div class="feature">案例学习</div>
+            </div>
+          </section>
+
+          <section class="section section-wide" id="help">
+            <div class="section-head">
+              <span class="section-tag">🆘</span>
+              <h2>被骗了怎么办？</h2>
+            </div>
+            <div class="steps">
+              <article class="step">
+                <div class="step-index">01</div>
+                <div>
+                  <h3>立即停止操作</h3>
+                  <p>停止继续转账、停止点击链接、停止共享屏幕，第一时间切断与对方联系。</p>
+                </div>
+              </article>
+              <article class="step">
+                <div class="step-index">02</div>
+                <div>
+                  <h3>保留关键证据</h3>
+                  <p>保存聊天记录、转账凭证、订单信息、电话号码、网址、App 名称和相关截图。</p>
+                </div>
+              </article>
+              <article class="step">
+                <div class="step-index">03</div>
+                <div>
+                  <h3>尽快拨打 96110</h3>
+                  <p>寻求反诈专线指导，争取在黄金时间内进行预警止付和后续处置。</p>
+                </div>
+              </article>
+              <article class="step">
+                <div class="step-index">04</div>
+                <div>
+                  <h3>同步报警处理</h3>
+                  <p>如涉及较大金额损失或持续威胁，请立即拨打 110 或前往就近派出所报案。</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="cta">
+              <div>
+                <h2>牢记反诈专线：96110</h2>
+                <p>遇到可疑来电、异常转账要求、退款理赔、投资荐股、共享屏幕等情况，先停下来，再核实。</p>
+              </div>
+              <a href="tel:96110" class="btn btn-primary">拨打 96110</a>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-box">
+          <div>防范诈骗，人人有责。增强防范意识，守护个人财产安全。</div>
+          <div>紧急求助：96110 / 110</div>
+        </div>
+      </div>
+    </footer>
+  </div>  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?be6d24b9969e6282da3ffef0bb6db3e8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </body>
 </html>
